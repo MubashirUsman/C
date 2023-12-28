@@ -1,0 +1,35 @@
+Pointers
+    // Pointers are strongly typed. int* p; int a; &a will return a pointer, *p=value at address p
+    // *p will read the value at complete memory allocated to the type of pointer p.
+    // for int*, machine will look at value of 4 bytes, for char* it will look at 1 byte
+    // adding/subtracting some constant integer is allowed on pointers, *(p+1) will take as many bytes as var type is.
+Pointer variables take 4 byte memory
+In strings Null termination '\0' is implicit, like "Hello" has 6 chars.
+
+Memory diagram which is assigned to some program: code/text ==> static/global ==> Stack ==> Heap
+code = stores the instructions of the program
+stack = function call information and local variables are stored here
+    Whenever a function is called, some memory from the stack is allocated for that function execution.
+    It is called the stack frame of that function. Stack is contiguous block of memory.
+    As soon as the new func is called, the control stop the execution of this func and jump to execute 
+    the called function
+    The size of stack-frame is calculated at the compilation time.
+    The func at the top of the stack is executing and rest of the func are paused.
+    Nested methods sit on top of each other in stack. And if it goes out of reserved memory of the stack it
+    is called stack-overflow. The memory assigned to stack is fixed and can't be changed.
+Heap = its size is not fixed and can vary during the execution of the program, its a large free pool of memory.
+    Heap is called dynamic memory and assigning memory from heap is called dynamic memory allocation.
+    It has nothing to do with heap data-structure.
+    To use dynamic memory in C we need to know 4 functions: malloc, calloc, realloc, free
+    malloc wants to know how much memory you want on the heap. malloc will return a pointer of starting address.
+    for example: malloc(sizeof(int)) will return a pointer of void type
+    Any memory assigned using malloc should be freed by calling free: free(p) //p is pointer of starting address
+    int* p = (int*)malloc(20*sizeof(int)) //reserves space for array sized 20 ints. 
+
+global = variables that can be accessed anywhere during the lifecycle of the program
+
+char A[20] = "Hello, World!"; // string is stored in the space for the array
+char *A = "Hello, World!"; //string is stored as a constant at the compile time. Can't be modified later.
+*(A+i) is same as A[i], (A+i) is same as &A[i]
+
+B[2][3] //two 1-D arrays of 3 elements each, like B[0] = {1,4,5} and B[1] = {8, 10, 12}

@@ -1,0 +1,21 @@
+Variables inside of a function are local to that function only
+When a var is passed to a function, then actually the value of that 
+    var is coppied to the function which is being called. This is called
+    "call by value"
+int Add(int a, int b) // this func wants values as arguments
+int Add(int* a, int* b) // this func wants (memory) address as arguments
+
+It is okay to pass a var from bottom(main) to top (called func) but it is 
+    not okay to pass a var from top to bottom, as once the top func has finished
+    its execution, it will be removed from the stack. And any other func can be given
+    that memory in the stack.
+
+Anything from heap can be safely returned, and it will not be de-allocated automatically.
+
+int* Add(int* a, int* b){
+    int* c = (int*)malloc(sizeof(int)); //here whatever c address has will persist as malloc gives us the block on heap.
+    *c = (*a) + (*b);
+    return c;
+}
+
+While returning from pointers we should be sure that address is not used to store something else,

@@ -1,0 +1,20 @@
+Memory allocation  
+    malloc, calloc, realloc
+Deallocation
+    free
+
+size_t datatype stores only positive integers, its like unsigned int data-type
+
+malloc
+void* malloc(size_t size): so this func return a void pointer with address of first byte.
+In practice we should know how much memory we need to get using malloc
+We can't de-referance a void pointer, its a generic pointer type.
+
+calloc
+void* calloc(size_t num, size_t size) //first is how many units, second is of which datatype
+for example: calloc(3, sizeof(int))
+calloc also initializes the memory that it allocates with 0.
+
+realloc
+void* realloc(void* p, size_t size) //first is pointer to the first block, second is new size
+to change the size of already reserved memory
